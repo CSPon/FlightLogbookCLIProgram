@@ -45,20 +45,18 @@ public class LogbookProgram {
 			switch(command) {
 				case 1:
 					fana.printFunctionAddNewAircraft();
+					printMainMenu();
+					command = input.nextInt();
+					input.nextLine();
 					break; // End of new aircraft
 					
 				default:
-					System.out.println("Unknown command. Try another command...");
+					System.out.println("Unknown or unsupported command. Try another command...");
 					printMainMenu();
 					command = input.nextInt();
 					input.nextLine();
 					break; // End of default
 			}
-			
-			clearScreen();
-			printMainMenu();
-			command = input.nextInt();
-			input.nextLine();
 		}
 		
 		// End of program (The exit part)

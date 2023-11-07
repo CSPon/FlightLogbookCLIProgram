@@ -12,7 +12,7 @@ public class FunctionAddNewAircraft {
 		this.input = input;
 	}
 	
-	public void printFunctionAddNewAircraft() {
+	public boolean printFunctionAddNewAircraft() {
 		String model, tail, cla;
 		char cat, ls, verify;
 		boolean completed = false;
@@ -64,7 +64,6 @@ public class FunctionAddNewAircraft {
 		System.out.println("/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\");
 		
 		System.out.println("Is this correct? (Y/N)");
-		System.out.println("Caution: Entering 'N' will start over!");
 		System.out.print(">> ");
 		verify = input.next().charAt(0);
 		completed = false;
@@ -76,14 +75,23 @@ public class FunctionAddNewAircraft {
 				System.out.println("Airplane has been added to the airplane list");
 				System.out.println("Enter to continue...");
 				input.nextLine();
-				completed = true;
+				return true;
 			}
 			else if(verify == 'n' || verify == 'N') {
-				System.out.println("Airplane has been dumped!");
-				System.out.println("Enter to continue...");
+				System.out.println("Enter Y to start over, or N to go back to menu.");
+				System.out.print("Start Over?>> ");
+				char restart = input.next().charAt(0);
 				input.nextLine();
-				printFunctionAddNewAircraft();
-				completed = true;
+				
+				if(restart == 'y' || restart == 'Y') {
+					if(printFunctionAddNewAircraft()) {
+						return true;
+					}
+					else return false;
+				}
+				else if(restart == 'n' || restart == 'N') {
+					return false;
+				}
 			}
 			else {
 				System.out.println("Is this correct? (Y/N)");
@@ -92,5 +100,6 @@ public class FunctionAddNewAircraft {
 				input.nextLine();
 			}
 		}
+		return false;
 	}
 }
