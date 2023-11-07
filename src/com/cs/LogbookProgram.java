@@ -27,6 +27,7 @@ public class LogbookProgram {
 		System.out.println("CLI Logbook Program");
 		System.out.println("*********************************************************************");
 		System.out.println("1. Add New Aircraft");
+		System.out.println("2. Remove Existing Aircraft");
 		System.out.println("0. Exit Program");
 		System.out.println("*********************************************************************");
 		System.out.print(">> ");
