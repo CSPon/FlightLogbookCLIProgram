@@ -6,6 +6,8 @@ import java.util.Scanner;
 public class LogbookProgram {
 	
 	private Scanner input;
+
+	private LogbookDataTracks db;
 	
 	private FunctionAddNewAircraft fana;
 	
@@ -19,7 +21,8 @@ public class LogbookProgram {
 	public LogbookProgram(Scanner input)
 	{
 		this.input = input;
-		fana = new FunctionAddNewAircraft(input);
+		db = new LogbookDataTracks();
+		fana = new FunctionAddNewAircraft(db, input);
 	}
 	
 	private void printMainMenu() {
@@ -35,6 +38,7 @@ public class LogbookProgram {
 	
 	public void startProcess()
 	{
+		clearScreen();
 		printMainMenu();
 		
 		int command = input.nextInt();
@@ -45,10 +49,19 @@ public class LogbookProgram {
 			switch(command) {
 				case 1:
 					fana.printFunctionAddNewAircraft();
+					
+					clearScreen();
 					printMainMenu();
 					command = input.nextInt();
 					input.nextLine();
 					break; // End of new aircraft
+					
+				case 2:
+					clearScreen();
+					printMainMenu();
+					command = input.nextInt();
+					input.nextLine();
+					break; // End of remove aircraft
 					
 				default:
 					System.out.println("Unknown or unsupported command. Try another command...");
@@ -61,6 +74,7 @@ public class LogbookProgram {
 		
 		// End of program (The exit part)
 		System.out.println("End of Program");
+		System.out.println("Press Enter to eixt");
 		input.nextLine();
 		input.close();
 	}
